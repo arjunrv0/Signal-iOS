@@ -33,6 +33,8 @@ class ThemePage: BasePage {
         } else {
             XCTFail("dark theme not on")
         }
+        //MARK: Reset theme to light mode
+        changeThemeButton.tap()
         return self
     }
 }

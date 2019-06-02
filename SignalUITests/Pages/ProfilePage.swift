@@ -12,6 +12,7 @@ class ProfilePage: BasePage {
     private var backToSettingsButton: XCUIElement!
     private var profileEditNameTextField: XCUIElement!
     private var profileEditDiscardButton: XCUIElement!
+    private var profileSaveButton: XCUIElement!
     
     @discardableResult
     override init() {
@@ -22,6 +23,7 @@ class ProfilePage: BasePage {
         backToSettingsButton = signalApp.buttons["Settings"]
         profileEditNameTextField = signalApp.textFields.element(matching: .textField, identifier: "ProfileViewController.nameTextField")
         profileEditDiscardButton = signalApp.alerts.buttons.element(matching: .button, identifier:"ProfileViewController.discard" )
+        profileSaveButton = signalApp.buttons.element(matching: .button, identifier: "ProfileViewController.saveButton")
         
     }
     
@@ -47,7 +49,7 @@ class ProfilePage: BasePage {
     func discardEditAndCheckName() -> ProfilePage {
         let nameInProfile = profileEditNameTextField.value as! String
         profileEditDiscardButton.tap()
-        let nameInSettings = appProfileSettingsCell.staticTexts.element(boundBy: 1).label 
+        let nameInSettings = appProfileSettingsCell.staticTexts.element(boundBy: 1).label
         if nameInProfile == nameInSettings {
             XCTAssert(true)
         } else {
@@ -56,5 +58,21 @@ class ProfilePage: BasePage {
         return self
     }
     
+    @discardableResult
+    func enterNameToSave() -> ProfilePage {
+        let moveCursorToRightMost = signalApp.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.9))
+        moveCursorToRightMost.tap()
+        profileEditNameTextField.typeText(randomString(length: 2))
+        sleep(3)
+        let profileNameAfterEdit = profileEditNameTextField.value as? String
+        profileSaveButton.tap()
+        let profileNameAfterSaving = appProfileSettingsCell.staticTexts.element(boundBy: 1).label
+        if profileNameAfterEdit == profileNameAfterSaving {
+            XCTAssert(true)
+        } else {
+            XCTFail("Name after editing and saving is not the same")
+        }
+        return self
+    }
 }
 

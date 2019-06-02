@@ -18,4 +18,14 @@ class ProfileTest: BaseTest {
                 .discardEditAndCheckName()
         }
     }
+    
+    func testProfileEditAndSaveName() {
+        _ = XCTContext.runActivity(named: "Edit and save name from settings", block: { (activity) in
+            ThemePage()
+                .openAppSettings()
+            ProfilePage()
+                .openProfileEditSettings()
+                .enterNameToSave()
+        })
+    }
 }

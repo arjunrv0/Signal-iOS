@@ -24,7 +24,7 @@ class LoginPage: BasePage {
     
     @discardableResult
     override init() {
-         super.init()
+        super.init()
         
         phoneNumberTextField = signalApp.textFields.element(matching: .textField, identifier: "onboarding.phoneNumber.phoneNumberTextField")
         countryNameLabel = signalApp.staticTexts.element(matching: .staticText, identifier: "onboarding.phoneNumber.countryNameLabel")
@@ -36,24 +36,39 @@ class LoginPage: BasePage {
     
     @discardableResult
     func changeCallingCode(country: String) -> LoginPage {
-        countryNameLabel.tap()
-        callingCodeTableQuery.tap()
-        callingCodeTableQuery.typeText(country)
-        let changeCallingCode = callingCode.staticTexts[country]
-        changeCallingCode.tap()
+        if countryNameLabel.exists {
+            countryNameLabel.tap()
+            callingCodeTableQuery.tap()
+            callingCodeTableQuery.typeText(country)
+            let changeCallingCode = callingCode.staticTexts[country]
+            changeCallingCode.tap()
+        }
+        else {
+            print("User probably might logged in successfully")
+        }
         return self
     }
     
     @discardableResult
     func enterPhoneNumber(phone: String) -> LoginPage {
-        phoneNumberTextField.tap()
-        phoneNumberTextField.typeText(phone)
+        if phoneNumberTextField.exists {
+            phoneNumberTextField.tap()
+            phoneNumberTextField.typeText(phone)
+        }
+        else {
+            print("User probably might logged in successfully")
+        }
         return self
     }
     
     @discardableResult
     func proceedToOtpScreen() -> LoginPage {
-        phoneNumberNextButton.tap()
+        if phoneNumberNextButton.exists {
+            phoneNumberNextButton.tap()
+        }
+        else {
+            print("User probably might logged in successfully")
+        }
         return self
     }
     

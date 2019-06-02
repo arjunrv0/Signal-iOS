@@ -2523,17 +2523,33 @@
 		B2D9A38722A2BB4E0094960F /* SignalUITests */ = {
 			isa = PBXGroup;
 			children = (
+				B2D9A3A222A441090094960F /* Tests */,
+				B2D9A3A122A440DF0094960F /* Pages */,
 				B2D9A38A22A2BB4E0094960F /* Info.plist */,
-				B2D9A39022A2BD550094960F /* BaseTest.swift */,
-				B2D9A39322A2C0E80094960F /* LoginPage.swift */,
-				B2D9A39522A2C0F50094960F /* BasePage.swift */,
-				B2D9A39722A2D9C10094960F /* LoginTest.swift */,
-				B2D9A39922A3C5BE0094960F /* ThemePage.swift */,
-				B2D9A39B22A3C5CC0094960F /* ThemeTest.swift */,
-				B2D9A39D22A3F5290094960F /* ProfilePage.swift */,
-				B2D9A39F22A3F57D0094960F /* ProfileTest.swift */,
 			);
 			path = SignalUITests;
+			sourceTree = "<group>";
+		};
+		B2D9A3A122A440DF0094960F /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				B2D9A39522A2C0F50094960F /* BasePage.swift */,
+				B2D9A39322A2C0E80094960F /* LoginPage.swift */,
+				B2D9A39922A3C5BE0094960F /* ThemePage.swift */,
+				B2D9A39D22A3F5290094960F /* ProfilePage.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		B2D9A3A222A441090094960F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B2D9A39022A2BD550094960F /* BaseTest.swift */,
+				B2D9A39722A2D9C10094960F /* LoginTest.swift */,
+				B2D9A39B22A3C5CC0094960F /* ThemeTest.swift */,
+				B2D9A39F22A3F57D0094960F /* ProfileTest.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		B633C4FD1A1D190B0059AC12 /* Images */ = {
