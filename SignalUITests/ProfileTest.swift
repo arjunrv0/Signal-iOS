@@ -7,15 +7,15 @@ import XCTest
 
 class ProfileTest: BaseTest {
     
-    func testProfileDiscardChanges(){
+    func testProfileNameNotChangedAfterDiscard(){
         _ = XCTContext.runActivity(named: "Discard profile update and check if changes are not reflected") { (activity) in
             ThemePage()
                 .openAppSettings()
             ProfilePage()
                 .openProfileEditSettings()
+                .tapEditNameInSettings()
                 .backToSettingsScreen()
-            signalApp.debugDescription
-            
+                .discardEditAndCheckName()
         }
     }
 }
